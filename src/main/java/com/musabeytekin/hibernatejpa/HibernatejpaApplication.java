@@ -1,5 +1,7 @@
 package com.musabeytekin.hibernatejpa;
 
+import com.musabeytekin.hibernatejpa.dao.StudentDAO;
+import com.musabeytekin.hibernatejpa.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,9 +16,19 @@ public class HibernatejpaApplication {
 
 
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args) {
+	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			System.out.println("Hello World");
+			createStudent(studentDAO);
 		};
+	}
+
+	private void createStudent(StudentDAO studentDAO) {
+		System.out.println("Creating student...");
+		Student student = new Student("Recep Tayyip", "Erdogan", "rterdogan@mail.com.tr");
+		System.out.println("Saving student...");
+		studentDAO.save(student);
+
+		System.out.println("Student saved! Generated id: " + student.getId());
+
 	}
 }
