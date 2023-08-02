@@ -14,7 +14,6 @@ public class HibernatejpaApplication {
 		SpringApplication.run(HibernatejpaApplication.class, args);
 	}
 
-
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {

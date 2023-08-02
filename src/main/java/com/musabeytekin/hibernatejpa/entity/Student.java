@@ -1,6 +1,7 @@
 package com.musabeytekin.hibernatejpa.entity;
 
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Bean;
 
 @Entity
 @Table(name = "student")
@@ -11,13 +12,13 @@ public class Student {
     @Column(name = "id")
     private Long id;
 
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
     public Student() {
@@ -70,4 +71,5 @@ public class Student {
                 ", email='" + email + '\'' +
                 '}';
     }
+
 }
