@@ -18,12 +18,20 @@ public class HibernatejpaApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
 			createStudent(studentDAO);
+			readStudent(studentDAO);
 		};
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		System.out.println("Reading student...");
+		Student student = studentDAO.findById(1);
+		System.out.println("Student: " + student);
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
 		System.out.println("Creating student...");
 		Student student = new Student("Recep Tayyip", "Erdogan", "rterdogan@mail.com.tr");
+
 		System.out.println("Saving student...");
 		studentDAO.save(student);
 
